@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator UI</title>
+    <style>
+        /* Basic reset and page centering */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Calculator frame */
+        .calculator {
+            width: 320px;
+            background-color: #17181a;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* The Output Screen */
+        .display {
+            width: 100%;
+            height: 80px;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 2.5rem;
+            text-align: right;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        /* Buttons Grid Layout */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        /* Global Button Styles */
+        button {
+            height: 60px;
+            border-radius: 50%; /* Makes buttons perfectly circular */
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.1s ease;
+        }
+
+        button:active {
+            opacity: 0.8;
+        }
+
+        /* Standard Number Buttons */
+        .btn-number {
+            background-color: #303136;
+            color: #ffffff;
+        }
+
+        /* Math Operation Buttons (+, -, *, =, etc.) */
+        .btn-operator {
+            background-color: #005db2;
+            color: #ffffff;
+        }
+
+        /* Top row functional buttons (Clear, Backspace) */
+        .btn-function {
+            background-color: #616161;
+            color: #ffffff;
+        }
+
+        /* Double-width button for the zero keys */
+        .zero-btn {
+            grid-column: span 2;
+            border-radius: 30px; /* Rounded pill shape for double width */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" class="display" placeholder="0" readonly>
+
+        <div class="buttons-grid">
+            <button class="btn-function">C</button>
+            <button class="btn-function">+/-</button>
+            <button class="btn-function">%</button>
+            <button class="btn-operator">÷</button>
+
+            <button class="btn-number">7</button>
+            <button class="btn-number">8</button>
+            <button class="btn-number">9</button>
+            <button class="btn-operator">×</button>
+
+            <button class="btn-number">4</button>
+            <button class="btn-number">5</button>
+            <button class="btn-number">6</button>
+            <button class="btn-operator">−</button>
+
+            <button class="btn-number">1</button>
+            <button class="btn-number">2</button>
+            <button class="btn-number">3</button>
+            <button class="btn-operator">+</button>
+
+            <button class="btn-number zero-btn">0</button>
+            <button class="btn-number">.</button>
+            <button class="btn-operator">=</button>
+        </div>
+    </div>
+
+    <script>
+        // STEP 1: Select your DOM elements
+        // You will need to grab the display screen and the buttons so JS can interact with them.
+        // e.g., const display = document.querySelector('.display');
+        // e.g., const buttons = document.querySelectorAll('button');
+
+        // STEP 2: Create variables to hold your calculation data
+        // You'll need variables to track the current input number, the previous number, 
+        // and whichever operator (+, -, *, /) the user clicked.
+        // e.g., let currentInput = '';
+        // e.g., let previousInput = '';
+        // e.g., let activeOperator = null;
+
+        // STEP 3: Add Event Listeners
+        // Use a loop or event delegation to listen for clicks on all the buttons.
+        // Inside the click handler, check what kind of button was pressed:
+        //   - If it's a number: Append it to 'currentInput' and update the display.
+        //   - If it's an operator: Save the 'currentInput' into 'previousInput', clear '
